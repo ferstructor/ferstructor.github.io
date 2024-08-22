@@ -19,6 +19,18 @@ jobs:
         run: |
           npm ci
           npm run build
+          cp dist/index.html dist/404.html
+          
+
+        
+      - name: Create .htaccess file
+        run: |
+          echo "RewriteEngine On" > dist/.htaccess
+          echo "RewriteBase /" >> dist/.htaccess
+          echo "RewriteRule ^index\.html$ - [L]" >> dist/.htaccess
+          echo "RewriteCond %{REQUEST_FILENAME} !-f" >> dist/.htaccess
+          echo "RewriteCond %{REQUEST_FILENAME} !-d" >> dist/.htaccess
+          echo "RewriteRule . /index.html [L]" >> dist/.htaccess
           
       - name: Create .nojekyll file
         run: touch dist/.nojekyll
