@@ -2,6 +2,7 @@
   "name": "my-twa",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://ferstructor.github.io/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
